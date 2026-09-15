@@ -1,8 +1,6 @@
-<script>
 	class mcblock extends HTMLElement {
 		connectedCallback() {
 			this.innerHTML = "<h1>Hello from my custom block!</h1>";
 		}
 	}
 	customElements.define('cblock-m', mcblock);
-</script>
