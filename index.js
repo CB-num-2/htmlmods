@@ -1,6 +1,12 @@
 (function() {
     'use strict';
 
+    // Immediately inject a style rule to ensure absolutely NO UI or raw elements
+    // from inside the custom mod blocks are displayed or rendered by the browser.
+    const style = document.createElement('style');
+    style.textContent = 'mod-m, mod-m * { display: none !important; }';
+    document.head.appendChild(style);
+
     function cleanText(text) {
         if (!text) return '';
         return text.replace(/<![\s\S]*?>/g, '') // Strip custom comments
@@ -29,8 +35,6 @@
             const title = titleEl ? cleanText(titleEl.innerHTML) : '';
             const prefix = prefixEl ? cleanText(prefixEl.innerHTML) : '';
             const sname = snameEl ? cleanText(snameEl.innerHTML) : '';
-            
-            // For allowed values and block info, preserve spacing boundaries nicely
             const sallowedvalues = sallowedEl ? cleanText(sallowedEl.innerHTML) : '';
             const binfo = binfoEl ? cleanText(binfoEl.innerHTML) : '';
             const codef = codefEl ? cleanText(codefEl.innerHTML) : '';
