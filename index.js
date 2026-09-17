@@ -1,45 +1,38 @@
 /**
- * Example Mod
- * Format: #numbers=false. #answer=(true='t'),(maybe=no),(false='f'). #text=false. #symbols=false. #code=true. #other=false.
- * Description: A background utility mod that runs silently without any graphical user interface.
+ * example -ex example
+ * #numbers=false.
+ * #answer=(true='t'),(maybe=no),(false='f').
+ * #text=false.
+ * #symbols=false.
+ * #code=true.
+ * #other=false.
+ * has-end: false; has-sub: true;
  */
 
 (function() {
     'use strict';
 
-    // Mod configuration matching the requested format specifications
-    const config = {
-        numbers: false,
-        answer: {
-            true: 't',
-            maybe: null, // 'no' evaluated as an explicit negative/empty state
-            false: 'f'
+    // Exact configuration block parsed from the system metadata
+    const modConfig = {
+        prefix: '-ex',
+        settings: {
+            numbers: false,
+            answer: { true: 't', maybe: 'no', false: 'f' },
+            text: false,
+            symbols: false,
+            code: true,
+            other: false
         },
-        text: false,
-        symbols: false,
-        code: true,
-        other: false
+        meta: {
+            hasEnd: false,
+            hasSub: true
+        }
     };
 
-    // Core functionality initialization
-    function initMod() {
-        if (!config.code) return;
+    // Main execution entry point for the mod framework
+    function entryPoint() {
+        // Confirm the mod is active via framework requirements (#code=true)
+        if (!modConfig.settings.code) return;
 
-        // Perform silent background operations here
-        console.log("Mod loaded successfully with NO UI configuration.");
-        
-        // Example logic: Monitor context or manipulate underlying state silently
-        executeBackgroundLogic();
-    }
-
-    function executeBackgroundLogic() {
-        // Core invisible mechanics go here
-    }
-
-    // Run the mod
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initMod);
-    } else {
-        initMod();
-    }
-})();
+        // Implement background logic here (No UI elements created)
+        console.log(`Mod [${modConfig.prefix}] active. Running background tasks...`);
