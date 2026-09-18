@@ -1,0 +1,21 @@
+<script src="https://cb-num-2.github.io/htmlmods/index.js"></script>
+<mod-m>
+	<prefix>
+		-ex
+	</prefix>
+	<code-m type="js">
+		<script>
+			class ExampleBlock extends HTMLElement {
+	constructor() {
+		super();
+	}
+	connectedCallback() {
+		this.textContent = "482610578";
+	}
+}
+if (!customElements.get('example')) {
+	customElements.define('example', ExampleBlock);
+}
+		</script>
+	</code-m>
+</mod-m>
